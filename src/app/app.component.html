@@ -6,7 +6,7 @@
                   <img src="/assets/images/logos/{{siteName}}.webp" alt="" class="header_logo">
               </a>
               <div class="logo_sign">
-                  <a href="" target="_blank" class="af-login" [href]="['https://ag.{{origin}}/#/login']"> Login</a>
+                <a href="{{ 'https://ag.' + origin + '/#/login' }}" target="_blank" class="af-login">Login</a>
                   <a href="" class="af-login">Signup</a>
               </div>
           </div>
@@ -34,7 +34,7 @@
               </div>
           </div>
 
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <div class="myform"><label class="form-label">Confirm Password</label>
                 <div class="input-group">
                     <input [type]="visibleconfirm ? 'text' : 'password'" name="password" class="form-control"
@@ -46,7 +46,7 @@
                         <i class="fa fa-eye" aria-hidden="true" *ngIf="visibleconfirm"></i>
                     </span></div>
             </div>
-        </div>
+        </div> -->
 
           <div class="mb-3">
             <div class="myform"><label class="form-label">Confirm Password</label>
