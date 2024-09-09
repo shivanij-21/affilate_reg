@@ -226,6 +226,19 @@ export class AppComponent {
   showconfirm() {
     this.visibleconfirm = !this.visibleconfirm;
   }
+
+  blocktoster: boolean = false;
+  tosterMessage: string = '';
+  closeToster() {
+    this.blocktoster = false;
+  }
+  showToster(message: string) {
+    this.tosterMessage = message;
+    this.blocktoster = true;
+    setTimeout(() => {
+      this.closeToster();
+    }, 2000); // Hide after 2 seconds
+  }
 }
 export const passwordMatchingValidatior: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
   const password = control.get('password');
