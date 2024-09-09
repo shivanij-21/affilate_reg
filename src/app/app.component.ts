@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn,
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from './sevices/users.service';
 import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,7 @@ export class AppComponent {
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
     private usersService: UsersService,
+    private toastr: ToastrService,
   ) {
     this.route.queryParams.subscribe(params => {
       this.referralcode = params?.['referal_code'];
@@ -42,7 +44,7 @@ export class AppComponent {
     this.userRegForm = this.fb.group({
       userName: ['', Validators.required],
       password: ['', Validators.required],
-      conf_password: ['', Validators.required],
+      con_password: ['', Validators.required],
       fullName: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -70,7 +72,7 @@ export class AppComponent {
     this.userRegForm = this.fb.group({
       userName: ['', Validators.required],
       password: ['', Validators.required],
-      conf_password: ['', Validators.required],
+      con_password: ['', Validators.required],
       fullName: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -108,6 +110,10 @@ export class AppComponent {
     });
   }
   register() {
+    if (this.userRegForm.invalid) {
+      this.toastr.error('Please fill all required fields!');
+      return; 
+    }
     this.usersService.getAllB2cIDs().subscribe((data1: any) => {
       const existingIds = data1.result.map((item: any) => item.b2cID);
 
@@ -136,7 +142,7 @@ export class AppComponent {
         adminUserName: adminUserName,
         userName: this.userRegForm.value.userName,
         password: this.userRegForm.value.password,
-        conf_password: this.userRegForm.value.conf_password,
+        con_password: this.userRegForm.value.con_password,
         fullName: this.userRegForm.value.fullName,
         userType: 0,
         domain: this.origin,
@@ -152,7 +158,7 @@ export class AppComponent {
         exposureLimit: null,
         phoneNumber: this.userRegForm.value.phoneNumber,
         email: this.userRegForm.value.email,
-        adminRefCom: 50,
+        adminRefCom: 40,
         agentRefCom: 10
       }
 
@@ -161,19 +167,24 @@ export class AppComponent {
       this.usersService.register(data).subscribe((res: any) => {
         // console.log(res);
         if (res.errorCode == 0) {
+          this.toastr.success(res.message);
           let body = {
             "b2cID": newId,
             "domain": this.origin,
             "username": this.userRegForm.value.userName
           };
+        
 
           setTimeout(() => {
             this.usersService.postB2cID(body).subscribe((response) => {
               console.log(response);
             });
           }, 5000);
+          this.userRegForm.reset();
         }
-
+        else{
+          this.toastr.error(res.errorDescription);
+        }
       });
     });
   }
