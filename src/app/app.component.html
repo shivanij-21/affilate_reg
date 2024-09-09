@@ -6,7 +6,7 @@
                   <img src="/assets/images/logo.webp" alt="" class="header_logo">
               </a>
               <div class="logo_sign">
-                  <a href="" target="_blank" class="af-login" [href]="['https://ag.babu365.com/#/login']"> Login</a>
+                  <a href="" target="_blank" class="af-login" [href]="['https://ag.{{origin}}/#/login']"> Login</a>
                   <a href="" class="af-login">Signup</a>
               </div>
           </div>
@@ -33,6 +33,20 @@
                       </span></div>
               </div>
           </div>
+
+          <div class="mb-3">
+            <div class="myform"><label class="form-label">Confirm Password</label>
+                <div class="input-group">
+                    <input [type]="visibleconfirm ? 'text' : 'password'" name="password" class="form-control"
+                    formControlName="conf_password">
+                    <span class="input-group-text" (click)="showconfirm()"
+                        style="cursor: pointer;">
+                        <i class="fa fa-eye-slash" *ngIf="!visibleconfirm"
+                        aria-hidden="true" style="color: #000"></i>
+                        <i class="fa fa-eye" aria-hidden="true" *ngIf="visibleconfirm"></i>
+                    </span></div>
+            </div>
+        </div>
 
           <div class="mb-3">
             <div class="myform"><label class="form-label">Confirm Password</label>

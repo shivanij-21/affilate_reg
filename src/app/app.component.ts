@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from './sevices/users.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -11,28 +12,43 @@ import { UsersService } from './sevices/users.service';
 export class AppComponent {
   title = 'affilate';
 
-  // siteName = environment.siteName;
+  siteName = environment.siteName;
   selectedCountry = "+91";
   selectedName = "India";
   phoneSubmitted: boolean = false;
   submitted: boolean = false;
-  // domain = environment.origin;
-  // origin = environment.origin
+  domain = environment.origin;
+  origin = environment.origin
+  referralcode: any=0;
 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
     private usersService: UsersService,
   ) {
+    this.route.queryParams.subscribe(params => {
+      this.referralcode = params?.['referal_code'];
+    
+      if (this.referralcode) {
+        localStorage.setItem('referral_code', this.referralcode);
+        this.userRegForm.get('referredBy')?.setValue(this.referralcode);
+      } else {
+        const storedReferralCode = localStorage.getItem('referral_code');
+        if (storedReferralCode) {
+          this.userRegForm.get('referredBy')?.setValue(storedReferralCode);
+        }
+      }
+    });
+
     this.userRegForm = this.fb.group({
       userName: ['', Validators.required],
       password: ['', Validators.required],
-      con_password: ['', Validators.required],
+      conf_password: ['', Validators.required],
       fullName: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       referredBy: [0]
     });
-  }
+   }
 
   ngOnInit(): void {
 
@@ -43,13 +59,18 @@ export class AppComponent {
       // this.userType = +paramMap.get('userType');
     })
     // this.register()
+    const storedReferralCode = localStorage.getItem('referral_code');
+    if (storedReferralCode) {
+      this.userRegForm.get('referredBy')?.setValue(storedReferralCode);
+    }
+  
   }
 
   initUserRegForm() {
     this.userRegForm = this.fb.group({
       userName: ['', Validators.required],
       password: ['', Validators.required],
-      con_password: ['', Validators.required],
+      conf_password: ['', Validators.required],
       fullName: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -103,16 +124,22 @@ export class AppComponent {
 
       this.userRegForm.get('b2cID')?.setValue(newId);
       this.generatedIds.push(newId);
-
+      const storedReferralCode = localStorage.getItem('referral_code') || this.userRegForm.value.referredBy;
+      let adminUserName = '';
+      if (this.siteName === 'babu365') {
+        adminUserName = 'babu365USD';
+      } else if (this.siteName === 'cxwelcome') {
+        adminUserName = 'cxwelcomeUSD';
+      } 
       let data = {
-        referredBy: this.userRegForm.value.referredBy,
-        adminUserName: "babu365USD",
+        referredBy: storedReferralCode,
+        adminUserName: adminUserName,
         userName: this.userRegForm.value.userName,
         password: this.userRegForm.value.password,
-        con_password: this.userRegForm.value.con_password,
+        conf_password: this.userRegForm.value.conf_password,
         fullName: this.userRegForm.value.fullName,
         userType: 0,
-        domain: 'babu365.com',
+        domain: this.origin,
         prepaid: 0,
         lcbd: 0,
         lcbd1: 0,
@@ -136,7 +163,7 @@ export class AppComponent {
         if (res.errorCode == 0) {
           let body = {
             "b2cID": newId,
-            "domain": 'babu365.com',
+            "domain": this.origin,
             "username": this.userRegForm.value.userName
           };
 
@@ -152,29 +179,13 @@ export class AppComponent {
   }
 
   userRegForm: FormGroup;
-  userType?: number = 0;
   Allowedcaptcha: boolean = true;
   isClient: boolean = false;
   isprepaidOpen: boolean = false;
-  // isPremiumSite = environment.isPremiumSite;
+  isPremiumSite = environment.isPremiumSite;
   fullsharechkbx: boolean = false;
   userRegDefaultValues = {};
-  currencyMap = [
-    { id: 0, name: 'INR' },
-    { id: 1, name: 'USD' },
-    { id: 2, name: 'HKD' },
-    { id: 3, name: 'PTS' },
-    { id: 4, name: 'PBU' },
-    { id: 5, name: 'PSD' },
-    { id: 6, name: 'PKU' },
-    { id: 7, name: 'PTH' },
-    { id: 8, name: 'BDT' },
-    { id: 9, name: 'BZR' },
-    { id: 10, name: 'PKR' },
-    { id: 31, name: 'MYR' },
-    { id: 32, name: 'BLR' },
-  ];
-
+ 
 
   stakeformatted() {
     if (this.userRegForm.value.stake1) {
