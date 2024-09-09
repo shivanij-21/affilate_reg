@@ -1,0 +1,86 @@
+<div id="root">
+  <div class="affiliate-page">
+      <header style="background-color: rgb(0, 0, 0);">
+          <div class="d-flex align-items-center justify-content-between pe-3">
+              <a href="/">
+                  <img src="/assets/images/logo.webp" alt="" class="header_logo">
+              </a>
+              <div class="logo_sign">
+                  <a href="" target="_blank" class="af-login" [href]="['https://ag.babu365.com/#/login']"> Login</a>
+                  <a href="" class="af-login">Signup</a>
+              </div>
+          </div>
+      </header>
+<div class="data">
+      <form [formGroup]="userRegForm" (ngSubmit)="register()" class="afilate-form">
+          <div class="mb-3">
+              <div class="form-group pb-1">
+                  <label class="mb-0 form-label">Username</label>
+                  <input name="username" class="p-1 form-control" formControlName="userName">
+              </div>
+          </div>
+
+          <div class="mb-3">
+              <div class="myform"><label class="form-label">Password</label>
+                  <div class="input-group">
+                      <input [type]="visiblePassword ? 'text' : 'password'" name="password" class="form-control"
+                      formControlName="password">
+                      <span class="input-group-text" (click)="showPassword()"
+                          style="cursor: pointer;">
+                          <i class="fa fa-eye-slash" *ngIf="!visiblePassword"
+                          aria-hidden="true" style="color: #000"></i>
+                          <i class="fa fa-eye" aria-hidden="true" *ngIf="visiblePassword"></i>
+                      </span></div>
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="myform"><label class="form-label">Confirm Password</label>
+                <div class="input-group">
+                    <input [type]="visibleconfirm ? 'text' : 'password'" name="password" class="form-control"
+                    formControlName="con_password">
+                    <span class="input-group-text" (click)="showconfirm()"
+                        style="cursor: pointer;">
+                        <i class="fa fa-eye-slash" *ngIf="!visibleconfirm"
+                        aria-hidden="true" style="color: #000"></i>
+                        <i class="fa fa-eye" aria-hidden="true" *ngIf="visibleconfirm"></i>
+                    </span></div>
+            </div>
+        </div>
+
+          <div class="mb-3">
+              <div class="form-group">
+                  <label class="form-label">Full Name</label>
+                  <input name="fullName" class="p-1 form-control" formControlName="fullName">
+              </div>
+          </div>
+
+          <div class="mb-3">
+              <div class="form-group">
+                  <label class="form-label">Phone Number</label>
+                  <input name="phoneNumber" class="p-1 form-control" formControlName="phoneNumber">
+              </div>
+          </div>
+
+          <div class="mb-3">
+              <div class="form-group">
+                  <label class="form-label">Email</label>
+                  <input name="email" class="p-1 form-control" formControlName="email">
+              </div>
+          </div>
+
+          <div class="mb-3">
+              <div class="form-group">
+                  <label class="form-label">Referral Code (Optional)</label>
+                  <input name="referredBy" class="p-1 form-control" formControlName="referredBy">
+              </div>
+          </div>
+
+          <div class="w-100">
+              <button type="submit" class="w-100 btn btn-primary">Submit</button>
+          </div>
+      </form>
+  </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
