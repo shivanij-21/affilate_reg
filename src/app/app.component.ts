@@ -166,7 +166,7 @@ export class AppComponent {
         // console.log(res);
         if (res.errorCode == 0) {
           // this.showToster("Registered successfully")
-          this.toastr.success(res.message);
+          this.toastr.success('Registered successfully');
           let body = {
             "b2cID": newId,
             "domain": this.origin,
@@ -201,6 +201,11 @@ export class AppComponent {
   visibleconfirm = false;
   showconfirm() {
     this.visibleconfirm = !this.visibleconfirm;
+  }
+
+  visiblesidebar:boolean = false;
+  showsidebar(){
+    this.visiblesidebar = !this.visiblesidebar;
   }
 
   blocktoster: boolean = false;

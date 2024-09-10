@@ -1,93 +1,322 @@
-<div id="message" class="custom-toast success" *ngIf="blocktoster">
-    <a class="btn-close" (click)="closeToster()" style="cursor: pointer;"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
-    <p style="    margin: 0px;
-    font-size: 22px;">{{ tosterMessage }}</p>
-</div>
-<div id="message" class="custom-toast error" *ngIf="blocktostererror">
-    <a class="btn-close" (click)="closeToster()" style="cursor: pointer;"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
-    <p style="    margin: 0px;
-    font-size: 22px;">{{ tosterMessageerror }}</p>
-</div>
-
-<header style="background-color: rgb(0, 0, 0);">
-    <div class="d-flex align-items-center justify-content-between pe-3">
-        <a href="/">
-            <img src="/assets/images/logos/{{siteName}}.webp" alt="" class="header_logo">
-        </a>
-        <div class="logo_sign">
-            <a href="{{ 'https://ag.' + origin + '/#/login' }}" target="_blank" class="af-login">Login</a>
-            <a href="" class="af-login">Signup</a>
-        </div>
-    </div>
-</header>
-
-
-<div class="background">
-    <div class="form-container">
-        <h2>Affiliate agent</h2>
-        <form [formGroup]="userRegForm" (ngSubmit)="register()">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Enter your username"
-                    formControlName="userName">
-            </div>
-
-            <div class="form-group">
-                <label for="password">Password</label>
-                <div class="input-group">
-                    <input [type]="visiblePassword ? 'text' : 'password'" formControlName="password" type="password"
-                        id="password" name="password" placeholder="Enter your password">
-                    <span class="input-group-text" (click)="showPassword()" style="cursor: pointer;">
-                        <i class="fa fa-eye-slash" *ngIf="!visiblePassword" aria-hidden="true" style="color: #000"></i>
-                        <i class="fa fa-eye" aria-hidden="true" *ngIf="visiblePassword"></i>
-                    </span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="confirm-password">Confirm Password</label>
-                <div class="input-group">
-                    <input [type]="visibleconfirm ? 'text' : 'password'" formControlName="con_password" type="password"
-                        id="confirm-password" name="confirm-password" placeholder="Confirm your password">
-                    <span class="input-group-text" (click)="showconfirm()" style="cursor: pointer;">
-                        <i class="fa fa-eye-slash" *ngIf="!visibleconfirm" aria-hidden="true" style="color: #000"></i>
-                        <i class="fa fa-eye" aria-hidden="true" *ngIf="visibleconfirm"></i>
-                    </span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="full-name">Full Name</label>
-                <input formControlName="fullName" type="text" id="full-name" name="full-name"
-                    placeholder="Enter your full name">
-            </div>
-
-            <div class="form-group">
-                <label for="phone-number">Phone Number</label>
-                <input type="tel" id="phone-number" name="phone-number" placeholder="Enter your phone number"
-                    formControlName="phoneNumber">
-                <!-- <div class="flag-dropdown ">
-                    <div class="selected-flag" title="Afghanistan: + 93" tabindex="0" role="button"
-                        aria-haspopup="listbox">
-                        <div class="flag af">
-                            <div class="arrow"></div>
+<div id="page-container">
+    <div id="et-boc" class="et-boc">
+        <header class="et-l et-l--header">
+            <div class="et_builder_inner_content et_pb_gutters3">
+                <div
+                    class="et_pb_section et_pb_section_0_tb_header et_pb_with_background et_section_regular et_pb_section--with-menu">
+                    <div class="et_pb_row et_pb_row_0_tb_header et_pb_row--with-menu" style="z-index: 3;">
+                        <div
+                            class="et_pb_column et_pb_column_4_4 et_pb_column_0_tb_header  et_pb_css_mix_blend_mode_passthrough et-last-child et_pb_column--with-menu">
+                            <div
+                                class="et_pb_module et_pb_menu et_pb_menu_0_tb_header et_pb_bg_layout_light  et_pb_text_align_left et_dropdown_animation_fade et_pb_menu--with-logo et_pb_menu--style-left_aligned">
+                                <div class="et_pb_menu_inner_container clearfix">
+                                    <div class="et_pb_menu__logo-wrap">
+                                        <div class="et_pb_menu__logo">
+                                            <a><img decoding="async"
+                                                    src="https://babu88agents.com/wp-content/uploads/2023/02/logo.png"
+                                                    alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="et_pb_menu__wrap">
+                                        <div class="et_pb_menu__menu">
+                                            <nav class="et-menu-nav">
+                                                <ul id="menu-ind-menu" class="et-menu nav">
+                                                    <li id="menu-item-607"
+                                                        class="et_pb_menu_page_id-219 menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-607">
+                                                        <a>Home</a>
+                                                    </li>
+                                                    <li id="menu-item-1525"
+                                                        class="et_pb_menu_page_id-1525 menu-item menu-item-type-custom menu-item-object-custom menu-item-1525">
+                                                        <a href="{{ 'https://ag.' + origin + '/#/login' }}"
+                                                            target="_blank">Login</a>
+                                                    </li>
+                                                    <li id="menu-item-609"
+                                                        class="et_pb_menu_page_id-609 menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-609">
+                                                        <a aria-current="page">Join Us!</a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        <div class="et_mobile_nav_menu">
+                                            <div class="mobile_nav closed">
+                                                <!-- <span class="mobile_menu_bar"></span> -->
+                                                <i class="fa fa-align-justify" aria-hidden="true" (click)="showsidebar()"></i>
+                                                <ul id="mobile_menu1" class="et_mobile_menu" *ngIf="visiblesidebar">
+                                                    <li id="menu-item-607"
+                                                        class="et_pb_menu_page_id-219 menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-607 et_first_mobile_item">
+                                                        <a>Home</a>
+                                                    </li>
+                                                    <li id="menu-item-1525"
+                                                        class="et_pb_menu_page_id-1525 menu-item menu-item-type-custom menu-item-object-custom menu-item-1525">
+                                                        <a href="{{ 'https://ag.' + origin + '/#/login' }}" target="_blank">Login</a>
+                                                    </li>
+                                                    <li id="menu-item-609"
+                                                        class="et_pb_menu_page_id-609 menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-609">
+                                                        <a aria-current="page">Join Us!</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
+        </header>
+        <div id="et-main-area">
+            <div id="main-content">
+                <article id="post-3099" class="post-3099 page type-page status-publish hentry">
+                    <div class="entry-content">
+                        <div class="et-l et-l--post">
+                            <div class="et_builder_inner_content et_pb_gutters3">
+                                <div class="et_pb_section et_pb_section_0 et_pb_with_background et_section_regular">
+                                    <div class="et_pb_row et_pb_row_0">
+                                        <div
+                                            class="et_pb_column et_pb_column_4_4 et_pb_column_0  et_pb_css_mix_blend_mode_passthrough et-last-child">
+                                            <div
+                                                class="et_pb_module et_pb_text et_pb_text_0  et_pb_text_align_left et_pb_bg_layout_light">
+                                                <div class="et_pb_text_inner">
+                                                    <h2>Register Now to be a Babu88 Agent</h2>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="et_pb_module et_pb_text et_pb_text_1  et_pb_text_align_center et_pb_bg_layout_light">
+                                                <div class="et_pb_text_inner">
+                                                    <p class="data">Don’t miss the chance to earn up to 40% lifetime
+                                                        commission!</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="et_pb_section et_pb_section_1 et_pb_with_background et_section_regular">
+                                    <div class="et_pb_row et_pb_row_1">
+                                        <div
+                                            class="et_pb_column et_pb_column_4_4 et_pb_column_1  et_pb_css_mix_blend_mode_passthrough et-last-child">
+                                            <div class="et_pb_module et_pb_code et_pb_code_0  et_pb_text_align_center">
+                                                <!-- <div class="et_pb_code_inner"><iframe
+                                                        id="agent-registration-form-iframe"
+                                                        src="https://forms.babu88agents.com/in/en/agent-registration-form-only?utm_source=website&amp;utm_medium=direct&amp;utm_campaign=in-direct-website-registration&amp;utm_content=20240715-in-direct-website-registration"
+                                                        width="896" height="1450" frameborder="0" marginheight="0"
+                                                        marginwidth="0">Loading...</iframe>
+                                                </div> -->
 
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email address"
-                    formControlName="email">
-            </div>
+                                                <div id="__next">
+                                                    <!-- <div class="preloader loaded">
+                                                        <figure><img src="/images/logo/Babu88-White.png"
+                                                                alt="Babu88 Logo"></figure>
+                                                    </div> -->
+                                                    <div class="container registration-page text-center py-5">
+                                                        <h2 class="text-center font-medium text-2xl mb-4"></h2>
+                                                        <form id="registration-form" [formGroup]="userRegForm"
+                                                            (ngSubmit)="register()"
+                                                            class="flex flex-1 flex-col justify-evenly">
+                                                            <div class="card mb-3" id="Account InformationCard">
+                                                                <div class="card-header text-start">
+                                                                    <h6>Account Information</h6>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <p class="card-title text-start mb-4">Your login
+                                                                        name, password and confirm password</p>
 
-            <div class="form-group">
-                <label for="referral-code">Referral Code (Optional)</label>
-                <input formControlName="referredBy" type="text" id="referral-code" name="referral-code"
-                    placeholder="Enter referral code (if any)">
+                                                                    <div class="form-floating mb-3"><input id="agent_id"
+                                                                            type="text" class="form-control"
+                                                                            placeholder="Enter your username"
+                                                                            formControlName="userName" required
+                                                                            name="agent_id">
+                                                                        <!-- <label for="agent_id"
+                                                                            class="form-label">Agent ID</label> -->
+                                                                        <div id="nameHelper"
+                                                                            class="form-text text-start">User ID that
+                                                                            you want to use login. Minimum 6 characters.
+                                                                        </div>
+                                                                        <div class="text-danger text-start" *ngIf="
+                                                                        userRegForm?.get('userName')?.['invalid'] &&
+                                                                        (userRegForm?.get('userName')?.['touched'] ||
+                                                                          userRegForm?.get('userName')?.['dirty'])
+                                                                      "><i class="fa fa-times me-2"
+                                                                                aria-hidden="true"></i>Username is
+                                                                            required</div>
+                                                                    </div>
+
+                                                                    <div class="form-floating mb-3">
+                                                                        <div class="input-data">
+                                                                        <input id="password"
+                                                                            type="password" class="form-control"
+                                                                            [type]="visiblePassword ? 'text' : 'password'"
+                                                                            formControlName="password"
+                                                                            placeholder="Password" name="password"
+                                                                            required>
+                                                                        <span class="input-group-text"
+                                                                            (click)="showPassword()"
+                                                                            style="cursor: pointer;">
+                                                                            <i class="fa fa-eye-slash"
+                                                                                *ngIf="!visiblePassword"
+                                                                                aria-hidden="true"
+                                                                                style="color: #000"></i>
+                                                                            <i class="fa fa-eye" aria-hidden="true"
+                                                                                *ngIf="visiblePassword"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                        <!-- <label
+                                                                            for="password"
+                                                                            class="form-label">Password</label> -->
+                                                                        <div id="passwordHelper"
+                                                                            class="form-text text-start">Your login
+                                                                            password. Minimum 6 characters.</div>
+                                                                        <div class="text-danger text-start" *ngIf="
+                                                                        userRegForm?.get('password')?.['invalid'] &&
+                                                                        (userRegForm?.get('password')?.['touched'] ||
+                                                                          userRegForm?.get('password')?.['dirty'])
+                                                                      "><i class="fa fa-times me-2"
+                                                                                aria-hidden="true"></i>Password is
+                                                                            required</div>
+                                                                    </div>
+
+                                                                    <div class="form-floating mb-3">
+                                                                        <div class="input-data">
+                                                                        <input id="password"
+                                                                            type="password" class="form-control"
+                                                                            [type]="visibleconfirm ? 'text' : 'password'" formControlName="con_password"
+                                                                            placeholder="Confirm Password" name="password"
+                                                                            required>
+                                                                            <span class="input-group-text" (click)="showconfirm()" style="cursor: pointer;">
+                                                                                <i class="fa fa-eye-slash" *ngIf="!visibleconfirm" aria-hidden="true" style="color: #000"></i>
+                                                                                <i class="fa fa-eye" aria-hidden="true" *ngIf="visibleconfirm"></i>
+                                                                            </span>
+                                                                    </div>
+                                                                        <!-- <label
+                                                                            for="password"
+                                                                            class="form-label">Password</label> -->
+                                                                        <div id="passwordHelper"
+                                                                            class="form-text text-start">Your login
+                                                                            password. Minimum 6 characters.</div>
+                                                                        <div class="text-danger text-start" *ngIf="
+                                                                        userRegForm?.get('con_password')?.['invalid'] &&
+                                                                        (userRegForm?.get('con_password')?.['touched'] ||
+                                                                          userRegForm?.get('con_password')?.['dirty'])
+                                                                      "><i class="fa fa-times me-2"
+                                                                                aria-hidden="true"></i>Confirm password is
+                                                                            required</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card mb-3" id="Personal InformationCard">
+                                                                <div class="card-header text-start">
+                                                                    <h6>Personal Information</h6>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <p class="card-title text-start mb-4">Please provide
+                                                                        us your personal information. These information
+                                                                        will be used to verify your identity when you
+                                                                        reach out to Agent Support.</p>
+                                                                    <div class="form-floating mb-3">
+                                                                        <input formControlName="fullName"
+                                                                            id="real_name" type="text"
+                                                                            class="form-control" placeholder="Full Name"
+                                                                            name="real_name" required>
+                                                                        <!-- <label for="real_name"
+                                                                            class="form-label">Full Name</label> -->
+                                                                        <div id="nameHelper"
+                                                                            class="form-text text-start">Full name as
+                                                                            shown in your Aadhaar Card</div>
+                                                                            <div class="text-danger text-start" *ngIf="
+                                                                        userRegForm?.get('fullName')?.['invalid'] &&
+                                                                        (userRegForm?.get('fullName')?.['touched'] ||
+                                                                          userRegForm?.get('fullName')?.['dirty'])
+                                                                      "><i class="fa fa-times me-2"
+                                                                                aria-hidden="true"></i>Full name is
+                                                                            required</div>
+                                                                    </div>
+                                                                    <div class="form-group mb-3">
+                                                                        <div class="input-group"><span
+                                                                                class="input-group-text"
+                                                                                id="Phone Number">+91 <i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                                                                                
+                                                                                <input formControlName="phoneNumber"
+                                                                                id="mobile" type="number"
+                                                                                class="form-control"
+                                                                                placeholder="Phone Number"
+                                                                                aria-label="Phone Number"
+                                                                                aria-describedby="Phone Number"
+                                                                                name="mobile" required></div>
+                                                                        <!-- <div id="phoneHelper"
+                                                                            class="form-text text-start">Example:
+                                                                            1234567821, 2123456781</div> -->
+                                                                            <div class="text-danger text-start" *ngIf="
+                                                                        userRegForm?.get('phoneNumber')?.['invalid'] &&
+                                                                        (userRegForm?.get('phoneNumber')?.['touched'] ||
+                                                                          userRegForm?.get('phoneNumber')?.['dirty'])
+                                                                      "><i class="fa fa-times me-2"
+                                                                                aria-hidden="true"></i>Phone number is
+                                                                            required</div>
+                                                                    </div>
+                                                                    <div class="form-group mb-3">
+                                                                        <div class="input-group"><span
+                                                                                class="input-group-text"
+                                                                                id="Email">@</span><input id="email"
+                                                                                formControlName="email"
+                                                                                type="email" class="form-control"
+                                                                                placeholder="Email" aria-label="Email"
+                                                                                aria-describedby="Email" name="email">
+                                                                        </div>
+                                                                        <!-- <div id="emailHelper"
+                                                                            class="form-text text-start">Example:
+                                                                            example@email.com</div> -->
+                                                                            <div class="text-danger text-start" *ngIf="
+                                                                        userRegForm?.get('email')?.['invalid'] &&
+                                                                        (userRegForm?.get('email')?.['touched'] ||
+                                                                          userRegForm?.get('email')?.['dirty'])
+                                                                      "><i class="fa fa-times me-2"
+                                                                                aria-hidden="true"></i>Email is
+                                                                            required</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="card mb-3" id="Personal InformationCard">
+                                                                <div class="card-header text-start">
+                                                                    <h6>Opentional Information</h6>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <p class="card-title text-start mb-4">Please provide
+                                                                        us your personal information. These information
+                                                                        will be used to verify your identity when you
+                                                                        reach out to Agent Support.</p>
+                                                                    <div class="form-floating mb-3">
+                                                                        <input formControlName="referredBy"
+                                                                            id="real_name" type="text"
+                                                                            class="form-control" placeholder="Enter referral code (if any)"
+                                                                            name="real_name" required>
+                                                                        <!-- <label for="real_name"
+                                                                            class="form-label">Full Name</label> -->
+                                                                        <div id="nameHelper"
+                                                                            class="form-text text-start">Full name as
+                                                                            shown in your Aadhaar Card</div>
+                                                                            
+                                                                    </div>
+                                                                   
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="mb-4"></div><button
+                                                                id="reg-form-form-only-submit-btn"
+                                                                class="btn btn-primary btn-lg"
+                                                                type="submit">Submit</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
             </div>
-            <button type="submit">Register</button>
-        </form>
+        </div>
     </div>
 </div>
