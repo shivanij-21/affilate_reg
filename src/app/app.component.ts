@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from './sevices/users.service';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
@@ -27,11 +27,13 @@ export class AppComponent {
   isprepaidOpen: boolean = false;
   isPremiumSite = environment.isPremiumSite;
   fullsharechkbx: boolean = false;
+  
   userRegDefaultValues = {};
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
     private usersService: UsersService,
     private toastr: ToastrService,
+    private router: Router,
   ) {
    }
 
@@ -172,7 +174,10 @@ export class AppComponent {
               console.log(response);
             });
           }, 5000);
+          localStorage.removeItem('referral_code');
           this.userRegForm.reset();
+          const fullUrl = `https://ag.${this.origin}/affilate`;
+          window.location.href = fullUrl;
         }
         else{
           this.showTostererror(res.errorDescription);
