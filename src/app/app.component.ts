@@ -166,7 +166,7 @@ export class AppComponent {
         // console.log(res);
         if (res.errorCode == 0) {
           // this.showToster("Registered successfully")
-          this.toastr.success(res.message);
+          this.toastr.success('Registered successfully');
           let body = {
             "b2cID": newId,
             "domain": this.origin,
