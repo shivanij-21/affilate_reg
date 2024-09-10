@@ -117,7 +117,12 @@ export class AppComponent {
 
       this.userRegForm.get('b2cID')?.setValue(newId);
       this.generatedIds.push(newId);
-      const storedReferralCode = localStorage.getItem('referral_code') || this.userRegForm.value.referredBy;
+    const inputReferralCode = this.userRegForm.value.referredBy;
+    const storedReferralCode = localStorage.getItem('referral_code');
+    
+    const referralCodeToSend = inputReferralCode && inputReferralCode.trim() !== '' 
+      ? inputReferralCode 
+      : storedReferralCode;
       let adminUserName = '';
       if (this.siteName === 'babu365') {
         adminUserName = 'babu365USD';
@@ -125,7 +130,7 @@ export class AppComponent {
         adminUserName = 'cxwelcomeUSD';
       } 
       let data = {
-        referredBy: storedReferralCode,
+        referredBy: referralCodeToSend,
         adminUserName: adminUserName,
         userName: this.userRegForm.value.userName,
         password: this.userRegForm.value.password,
