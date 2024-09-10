@@ -20,14 +20,14 @@ export class AppComponent {
   submitted: boolean = false;
   domain = environment.origin;
   origin = environment.origin
-  referralcode: any=0;
+  referralcode: any = 0;
   userRegForm!: FormGroup;
   Allowedcaptcha: boolean = true;
   isClient: boolean = false;
   isprepaidOpen: boolean = false;
   isPremiumSite = environment.isPremiumSite;
   fullsharechkbx: boolean = false;
-  
+
   userRegDefaultValues = {};
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -35,7 +35,7 @@ export class AppComponent {
     private toastr: ToastrService,
     private router: Router,
   ) {
-   }
+  }
 
   ngOnInit(): void {
     this.initUserRegForm();
@@ -54,7 +54,7 @@ export class AppComponent {
         }
       }
     });
-  
+
   }
 
   initUserRegForm() {
@@ -100,8 +100,9 @@ export class AppComponent {
   }
   register() {
     if (this.userRegForm.invalid) {
-      this.showTostererror('Please fill all required fields!');
-      return; 
+      // this.showTostererror('Please fill all required fields!');
+      this.toastr.error('Please fill all required fields!');
+      return;
     }
     this.usersService.getAllB2cIDs().subscribe((data1: any) => {
       const existingIds = data1.result.map((item: any) => item.b2cID);
@@ -119,18 +120,18 @@ export class AppComponent {
 
       this.userRegForm.get('b2cID')?.setValue(newId);
       this.generatedIds.push(newId);
-    const inputReferralCode = this.userRegForm.value.referredBy;
-    const storedReferralCode = localStorage.getItem('referral_code');
-    
-    const referralCodeToSend = inputReferralCode && inputReferralCode.trim() !== '' 
-      ? inputReferralCode 
-      : storedReferralCode;
+      const inputReferralCode = this.userRegForm.value.referredBy;
+      const storedReferralCode = localStorage.getItem('referral_code');
+
+      const referralCodeToSend = inputReferralCode && inputReferralCode.trim() !== ''
+        ? inputReferralCode
+        : storedReferralCode;
       let adminUserName = '';
       if (this.siteName === 'babu365') {
         adminUserName = 'babu365USD';
       } else if (this.siteName === 'cxwelcome') {
         adminUserName = 'cxwelcomeUSD';
-      } 
+      }
       let data = {
         referredBy: referralCodeToSend,
         adminUserName: adminUserName,
@@ -161,13 +162,14 @@ export class AppComponent {
       this.usersService.register(data).subscribe((res: any) => {
         // console.log(res);
         if (res.errorCode == 0) {
-         this.showToster("Registered successfully")
+          // this.showToster("Registered successfully")
+          this.toastr.success(res.message);
           let body = {
             "b2cID": newId,
             "domain": this.origin,
             "username": this.userRegForm.value.userName
           };
-        
+
 
           setTimeout(() => {
             this.usersService.postB2cID(body).subscribe((response) => {
@@ -179,17 +181,14 @@ export class AppComponent {
           const fullUrl = `https://ag.${this.origin}/affilate`;
           window.location.href = fullUrl;
         }
-        else{
-          this.showTostererror(res.errorDescription);
+        else {
+          // this.showTostererror(res.errorDescription);
+          this.toastr.error(res.errorDescription);
         }
       });
     });
   }
 
-
- 
-
- 
 
   visiblePassword = false;
   showPassword() {
@@ -202,12 +201,12 @@ export class AppComponent {
   }
 
   blocktoster: boolean = false;
-  blocktostererror :boolean=false
+  blocktostererror: boolean = false
   tosterMessage: string = '';
-  tosterMessageerror:string=''
+  tosterMessageerror: string = ''
   closeToster() {
     this.blocktoster = false;
-    this.blocktostererror =false
+    this.blocktostererror = false
   }
   showTostererror(message: string) {
     this.tosterMessageerror = message;
