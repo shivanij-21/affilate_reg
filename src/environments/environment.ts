@@ -11,7 +11,7 @@ let hostname = window.origin;
 
 export const environment = {
   production: true,
-  siteName: 'babu365',
+  siteName: 'cxwelcome',
   xpgPay: true,
   // baseUrl: 'http://51.195.220.62:81', // Test
   baseUrl: 'http://136.244.79.114:81', // prod
@@ -27,7 +27,7 @@ export const environment = {
   iframeTVScoreurl: "https://555555.services",
   oddsSocketUrl: 'ws://209.250.242.175',
   captcha: true,
-  origin: 'babu365.com',
+  origin: 'cxwelcome.live',
   isSettingAllow: false,
   oldAdmin: false, //for horizontal view for risk management
   addagentform: false, 
