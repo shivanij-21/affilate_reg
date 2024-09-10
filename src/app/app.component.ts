@@ -22,6 +22,13 @@ export class AppComponent {
   origin = environment.origin
   referralcode: any=0;
 
+  userRegForm: FormGroup;
+  Allowedcaptcha: boolean = true;
+  isClient: boolean = false;
+  isprepaidOpen: boolean = false;
+  isPremiumSite = environment.isPremiumSite;
+  fullsharechkbx: boolean = false;
+  userRegDefaultValues = {};
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
     private usersService: UsersService,
@@ -31,6 +38,7 @@ export class AppComponent {
       this.referralcode = params?.['referal_code'];
     
       if (this.referralcode) {
+        localStorage.removeItem('referral_code'); 
         localStorage.setItem('referral_code', this.referralcode);
         this.userRegForm.get('referredBy')?.setValue(this.referralcode);
       } else {
@@ -189,13 +197,6 @@ export class AppComponent {
     });
   }
 
-  userRegForm: FormGroup;
-  Allowedcaptcha: boolean = true;
-  isClient: boolean = false;
-  isprepaidOpen: boolean = false;
-  isPremiumSite = environment.isPremiumSite;
-  fullsharechkbx: boolean = false;
-  userRegDefaultValues = {};
  
 
  
