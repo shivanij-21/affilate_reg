@@ -21,8 +21,7 @@ export class AppComponent {
   domain = environment.origin;
   origin = environment.origin
   referralcode: any=0;
-
-  userRegForm: FormGroup;
+  userRegForm!: FormGroup;
   Allowedcaptcha: boolean = true;
   isClient: boolean = false;
   isprepaidOpen: boolean = false;
@@ -34,11 +33,16 @@ export class AppComponent {
     private usersService: UsersService,
     private toastr: ToastrService,
   ) {
+   }
+
+  ngOnInit(): void {
+    this.initUserRegForm();
+    this.userRegDefaultValues = this.userRegForm.value;
+
     this.route.queryParams.subscribe(params => {
       this.referralcode = params?.['referal_code'];
-    
       if (this.referralcode) {
-        localStorage.removeItem('referral_code'); 
+        localStorage.removeItem('referral_code');
         localStorage.setItem('referral_code', this.referralcode);
         this.userRegForm.get('referredBy')?.setValue(this.referralcode);
       } else {
@@ -48,35 +52,11 @@ export class AppComponent {
         }
       }
     });
-
-    this.userRegForm = this.fb.group({
-      userName: ['', Validators.required],
-      password: ['', Validators.required],
-      con_password: ['', Validators.required],
-      fullName: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      referredBy: [0]
-    });
-   }
-
-  ngOnInit(): void {
-
-    this.initUserRegForm()
-    console.log("this.user", this.userRegForm.value)
-    this.userRegDefaultValues = this.userRegForm.value;
-    this.route.paramMap.subscribe(paramMap => {
-      // this.userType = +paramMap.get('userType');
-    })
-    // this.register()
-    const storedReferralCode = localStorage.getItem('referral_code');
-    if (storedReferralCode) {
-      this.userRegForm.get('referredBy')?.setValue(storedReferralCode);
-    }
   
   }
 
   initUserRegForm() {
+
     this.userRegForm = this.fb.group({
       userName: ['', Validators.required],
       password: ['', Validators.required],
@@ -86,7 +66,6 @@ export class AppComponent {
       email: ['', [Validators.required, Validators.email]],
       referredBy: [0]
     });
-    console.log("this.user", this.userRegForm.value)
 
   }
 
@@ -196,6 +175,7 @@ export class AppComponent {
       });
     });
   }
+
 
  
 
