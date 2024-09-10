@@ -39,15 +39,16 @@
                                         </div>
                                         <div class="et_mobile_nav_menu">
                                             <div class="mobile_nav closed">
-                                                <span class="mobile_menu_bar"></span>
-                                                <ul id="mobile_menu1" class="et_mobile_menu" style="display: none;">
+                                                <!-- <span class="mobile_menu_bar"></span> -->
+                                                <i class="fa fa-align-justify" aria-hidden="true" (click)="showsidebar()"></i>
+                                                <ul id="mobile_menu1" class="et_mobile_menu" *ngIf="visiblesidebar">
                                                     <li id="menu-item-607"
                                                         class="et_pb_menu_page_id-219 menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-607 et_first_mobile_item">
                                                         <a>Home</a>
                                                     </li>
                                                     <li id="menu-item-1525"
                                                         class="et_pb_menu_page_id-1525 menu-item menu-item-type-custom menu-item-object-custom menu-item-1525">
-                                                        <a>Login</a>
+                                                        <a href="{{ 'https://ag.' + origin + '/#/login' }}" target="_blank">Login</a>
                                                     </li>
                                                     <li id="menu-item-609"
                                                         class="et_pb_menu_page_id-609 menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-609">
@@ -232,7 +233,8 @@
                                                                     <div class="form-group mb-3">
                                                                         <div class="input-group"><span
                                                                                 class="input-group-text"
-                                                                                id="Phone Number">+91</span>
+                                                                                id="Phone Number">+91 <i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                                                                                
                                                                                 <input formControlName="phoneNumber"
                                                                                 id="mobile" type="number"
                                                                                 class="form-control"

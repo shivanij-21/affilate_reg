@@ -203,6 +203,11 @@ export class AppComponent {
     this.visibleconfirm = !this.visibleconfirm;
   }
 
+  visiblesidebar:boolean = false;
+  showsidebar(){
+    this.visiblesidebar = !this.visiblesidebar;
+  }
+
   blocktoster: boolean = false;
   blocktostererror: boolean = false
   tosterMessage: string = '';
