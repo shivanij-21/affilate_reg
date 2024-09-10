@@ -1,6 +1,12 @@
 <div id="message" class="custom-toast success" *ngIf="blocktoster">
-    <a class="btn-close" (click)="closeToster()">Close</a>
-    <p>{{ tosterMessage }}</p>
+    <a class="btn-close" (click)="closeToster()">close</a>
+    <p style="    margin: 0px;
+    font-size: 22px;">{{ tosterMessage }}</p>
+  </div>
+  <div id="message" class="custom-toast error" *ngIf="blocktostererror">
+    <a class="btn-close" (click)="closeToster()">close</a>
+    <p style="    margin: 0px;
+    font-size: 22px;">{{ tosterMessageerror }}</p>
   </div>
 
 <header style="background-color: rgb(0, 0, 0);">

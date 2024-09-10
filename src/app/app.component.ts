@@ -111,7 +111,7 @@ export class AppComponent {
   }
   register() {
     if (this.userRegForm.invalid) {
-      this.toastr.error('Please fill all required fields!');
+      this.showTostererror('Please fill all required fields!');
       return; 
     }
     this.usersService.getAllB2cIDs().subscribe((data1: any) => {
@@ -167,7 +167,7 @@ export class AppComponent {
       this.usersService.register(data).subscribe((res: any) => {
         // console.log(res);
         if (res.errorCode == 0) {
-          this.toastr.success(res.message);
+         this.showToster("Registered successfully")
           let body = {
             "b2cID": newId,
             "domain": this.origin,
@@ -183,7 +183,7 @@ export class AppComponent {
           this.userRegForm.reset();
         }
         else{
-          this.toastr.error(res.errorDescription);
+          this.showTostererror(res.errorDescription);
         }
       });
     });
@@ -198,24 +198,7 @@ export class AppComponent {
   userRegDefaultValues = {};
  
 
-  stakeformatted() {
-    if (this.userRegForm.value.stake1) {
-      var stakes = [this.userRegForm.value.stake1,
-      this.userRegForm.value.stake2,
-      this.userRegForm.value.stake3,
-      this.userRegForm.value.stake4,
-      this.userRegForm.value.stake5,
-      this.userRegForm.value.stake6,
-      this.userRegForm.value.stake7,
-      this.userRegForm.value.stake8,
-      this.userRegForm.value.stake9,
-      this.userRegForm.value.stake10]
-    } else {
-      var stakes = [];
-    }
-
-    return stakes.toString();
-  }
+ 
 
   visiblePassword = false;
   showPassword() {
@@ -228,10 +211,21 @@ export class AppComponent {
   }
 
   blocktoster: boolean = false;
+  blocktostererror :boolean=false
   tosterMessage: string = '';
+  tosterMessageerror:string=''
   closeToster() {
     this.blocktoster = false;
+    this.blocktostererror =false
   }
+  showTostererror(message: string) {
+    this.tosterMessageerror = message;
+    this.blocktostererror = true;
+    setTimeout(() => {
+      this.closeToster();
+    }, 2000); // Hide after 2 seconds
+  }
+
   showToster(message: string) {
     this.tosterMessage = message;
     this.blocktoster = true;

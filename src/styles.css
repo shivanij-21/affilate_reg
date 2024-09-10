@@ -7,7 +7,7 @@ body {
     /* height: 100vh; */
     /* background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1600x900') no-repeat center center fixed; */
     background-size: cover;
-    background-image: url('/assets/images/background1mb.fd2f88097a66eaa127a6.jpg');
+    background-image: url('assets/images/background1mb.fd2f88097a66eaa127a6.jpg');
 }
 
 .background {
@@ -206,6 +206,7 @@ button:hover {
   }
   .custom-toast .btn-close {
     margin: 6px 10px 0 0;
+    float: inline-end;
   }
   .custom-toast.error {
     background-color: red !important;
