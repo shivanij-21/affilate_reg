@@ -76,7 +76,7 @@ export class AppComponent {
     return this.userRegForm?.controls;
   }
 
-  private currentId = 1000000101;
+  private currentId = 1000000151;
   private upperLimit = 1001000070;
   private generatedIds: string[] = [];
   generateUniqueB2cID(): void {
