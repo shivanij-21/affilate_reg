@@ -76,7 +76,7 @@ export class AppComponent {
     return this.userRegForm?.controls;
   }
 
-  private currentId = 1000000071;
+  private currentId = 1000000101;
   private upperLimit = 1001000070;
   private generatedIds: string[] = [];
   generateUniqueB2cID(): void {
@@ -178,11 +178,11 @@ export class AppComponent {
             this.usersService.postB2cID(body).subscribe((response) => {
               console.log(response);
             });
-          }, 5000);
+          }, 2000);
           localStorage.removeItem('referral_code');
           this.userRegForm.reset();
-          const fullUrl = `https://ag.${this.origin}/affilate`;
-          window.location.href = fullUrl;
+          // const fullUrl = `https://ag.${this.origin}/affilate`;
+          // window.location.href = fullUrl;
         }
         else {
           // this.showTostererror(res.errorDescription);
