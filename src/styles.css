@@ -10978,9 +10978,9 @@ img.mfp-img {
     left: -50px
 }
 
-.registration-page {
+/* .registration-page {
     background-color: #fafafa
-}
+} */
 
 .registration-page .card .card-header {
     background-color: gold
@@ -14865,7 +14865,7 @@ body.light-d .blog-style-two .blog-item .blog-post-num,body.light-d .counter-sty
     color: #6c757d;
 }
 #registration-form{
-    max-width: 500px;
+    /* max-width: 500px; */
     display: inline-block;
 }
 .header_logo {
