@@ -12,8 +12,8 @@
                                 <div class="et_pb_menu_inner_container clearfix">
                                     <div class="et_pb_menu__logo-wrap">
                                         <div class="et_pb_menu__logo">
-                                            <a><img decoding="async"
-                                                    src="https://babu88agents.com/wp-content/uploads/2023/02/logo.png"
+                                            <a><img decoding="async" class="logo-img"
+                                                src="/assets/images/logos/{{siteName}}.webp"
                                                     alt=""></a>
                                         </div>
                                     </div>
@@ -40,7 +40,8 @@
                                         <div class="et_mobile_nav_menu">
                                             <div class="mobile_nav closed">
                                                 <!-- <span class="mobile_menu_bar"></span> -->
-                                                <i class="fa fa-align-justify" aria-hidden="true" (click)="showsidebar()"></i>
+                                                <i class="fa fa-align-justify" aria-hidden="true"
+                                                    (click)="showsidebar()"></i>
                                                 <ul id="mobile_menu1" class="et_mobile_menu" *ngIf="visiblesidebar">
                                                     <li id="menu-item-607"
                                                         class="et_pb_menu_page_id-219 menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-607 et_first_mobile_item">
@@ -48,7 +49,8 @@
                                                     </li>
                                                     <li id="menu-item-1525"
                                                         class="et_pb_menu_page_id-1525 menu-item menu-item-type-custom menu-item-object-custom menu-item-1525">
-                                                        <a href="{{ 'https://ag.' + origin + '/#/login' }}" target="_blank">Login</a>
+                                                        <a href="{{ 'https://ag.' + origin + '/#/login' }}"
+                                                            target="_blank">Login</a>
                                                     </li>
                                                     <li id="menu-item-609"
                                                         class="et_pb_menu_page_id-609 menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-609">
@@ -78,7 +80,7 @@
                                             <div
                                                 class="et_pb_module et_pb_text et_pb_text_0  et_pb_text_align_left et_pb_bg_layout_light">
                                                 <div class="et_pb_text_inner">
-                                                    <h2>Register Now to be a Babu88 Agent</h2>
+                                                    <h2>Register Now to be a {{siteName}}'s Agent</h2>
                                                 </div>
                                             </div>
                                             <div
@@ -143,23 +145,23 @@
 
                                                                     <div class="form-floating mb-3">
                                                                         <div class="input-data">
-                                                                        <input id="password"
-                                                                            type="password" class="form-control"
-                                                                            [type]="visiblePassword ? 'text' : 'password'"
-                                                                            formControlName="password"
-                                                                            placeholder="Password" name="password"
-                                                                            required>
-                                                                        <span class="input-group-text"
-                                                                            (click)="showPassword()"
-                                                                            style="cursor: pointer;">
-                                                                            <i class="fa fa-eye-slash"
-                                                                                *ngIf="!visiblePassword"
-                                                                                aria-hidden="true"
-                                                                                style="color: #000"></i>
-                                                                            <i class="fa fa-eye" aria-hidden="true"
-                                                                                *ngIf="visiblePassword"></i>
-                                                                        </span>
-                                                                    </div>
+                                                                            <input id="password" type="password"
+                                                                                class="form-control"
+                                                                                [type]="visiblePassword ? 'text' : 'password'"
+                                                                                formControlName="password"
+                                                                                placeholder="Password" name="password"
+                                                                                required>
+                                                                            <span class="input-group-text"
+                                                                                (click)="showPassword()"
+                                                                                style="cursor: pointer;">
+                                                                                <i class="fa fa-eye-slash"
+                                                                                    *ngIf="!visiblePassword"
+                                                                                    aria-hidden="true"
+                                                                                    style="color: #000"></i>
+                                                                                <i class="fa fa-eye" aria-hidden="true"
+                                                                                    *ngIf="visiblePassword"></i>
+                                                                            </span>
+                                                                        </div>
                                                                         <!-- <label
                                                                             for="password"
                                                                             class="form-label">Password</label> -->
@@ -177,16 +179,23 @@
 
                                                                     <div class="form-floating mb-3">
                                                                         <div class="input-data">
-                                                                        <input id="password"
-                                                                            type="password" class="form-control"
-                                                                            [type]="visibleconfirm ? 'text' : 'password'" formControlName="con_password"
-                                                                            placeholder="Confirm Password" name="password"
-                                                                            required>
-                                                                            <span class="input-group-text" (click)="showconfirm()" style="cursor: pointer;">
-                                                                                <i class="fa fa-eye-slash" *ngIf="!visibleconfirm" aria-hidden="true" style="color: #000"></i>
-                                                                                <i class="fa fa-eye" aria-hidden="true" *ngIf="visibleconfirm"></i>
+                                                                            <input id="password" type="password"
+                                                                                class="form-control"
+                                                                                [type]="visibleconfirm ? 'text' : 'password'"
+                                                                                formControlName="con_password"
+                                                                                placeholder="Confirm Password"
+                                                                                name="password" required>
+                                                                            <span class="input-group-text"
+                                                                                (click)="showconfirm()"
+                                                                                style="cursor: pointer;">
+                                                                                <i class="fa fa-eye-slash"
+                                                                                    *ngIf="!visibleconfirm"
+                                                                                    aria-hidden="true"
+                                                                                    style="color: #000"></i>
+                                                                                <i class="fa fa-eye" aria-hidden="true"
+                                                                                    *ngIf="visibleconfirm"></i>
                                                                             </span>
-                                                                    </div>
+                                                                        </div>
                                                                         <!-- <label
                                                                             for="password"
                                                                             class="form-label">Password</label> -->
@@ -198,7 +207,8 @@
                                                                         (userRegForm?.get('con_password')?.['touched'] ||
                                                                           userRegForm?.get('con_password')?.['dirty'])
                                                                       "><i class="fa fa-times me-2"
-                                                                                aria-hidden="true"></i>Confirm password is
+                                                                                aria-hidden="true"></i>Confirm password
+                                                                            is
                                                                             required</div>
                                                                     </div>
                                                                 </div>
@@ -213,16 +223,16 @@
                                                                         will be used to verify your identity when you
                                                                         reach out to Agent Support.</p>
                                                                     <div class="form-floating mb-3">
-                                                                        <input formControlName="fullName"
-                                                                            id="real_name" type="text"
-                                                                            class="form-control" placeholder="Full Name"
-                                                                            name="real_name" required>
+                                                                        <input formControlName="fullName" id="real_name"
+                                                                            type="text" class="form-control"
+                                                                            placeholder="Full Name" name="real_name"
+                                                                            required>
                                                                         <!-- <label for="real_name"
                                                                             class="form-label">Full Name</label> -->
                                                                         <div id="nameHelper"
                                                                             class="form-text text-start">Full name as
                                                                             shown in your Aadhaar Card</div>
-                                                                            <div class="text-danger text-start" *ngIf="
+                                                                        <div class="text-danger text-start" *ngIf="
                                                                         userRegForm?.get('fullName')?.['invalid'] &&
                                                                         (userRegForm?.get('fullName')?.['touched'] ||
                                                                           userRegForm?.get('fullName')?.['dirty'])
@@ -231,21 +241,61 @@
                                                                             required</div>
                                                                     </div>
                                                                     <div class="form-group mb-3">
-                                                                        <div class="input-group"><span
+                                                                        <div class="input-group"
+                                                                            ><span (click)="openDropDaywise()"
                                                                                 class="input-group-text"
-                                                                                id="Phone Number">+91 <i class="fa fa-angle-down" aria-hidden="true"></i></span>
-                                                                                
-                                                                                <input formControlName="phoneNumber"
+                                                                                id="Phone Number">
+                                                                                <div class="flag af">
+                                                                                    <img loading="lazy" class="country-logo" [src]="'https://cxwelcome.live/m/assets/images/countries/' + selectedName +'.webp'" width="20px">
+                                                                                </div>{{selectedCountry}} <i
+                                                                                    class="fa fa-angle-down"
+                                                                                    aria-hidden="true"></i>
+                                                                            </span>
+
+                                                                            <input formControlName="phoneNumber"
                                                                                 id="mobile" type="number"
                                                                                 class="form-control"
                                                                                 placeholder="Phone Number"
                                                                                 aria-label="Phone Number"
                                                                                 aria-describedby="Phone Number"
-                                                                                name="mobile" required></div>
+                                                                                name="mobile" required>
+                                                                        </div>
+
+
+                                                                        <ul class="country-list " role="listbox"
+                                                                            tabindex="0" *ngIf="isPopupVisible">
+                                                                            <li class="search"><span
+                                                                                    class="search-emoji" role="img"
+                                                                                    aria-label="Magnifying glass">🔎</span><input
+                                                                                    class="search-box" type="search"
+                                                                                    [(ngModel)]="searchText"
+                                                                                    (keyup)="keyupSearch($event)"
+                                                                                    [ngModelOptions]="{standalone: true}"
+                                                                                    placeholder="search"
+                                                                                    autocomplete="off" value=""></li>
+                                                                            <li data-flag-key="flag_no_0"
+                                                                                *ngFor="let code of filteredCountries"
+                                                                                class="country" data-dial-code="1"
+                                                                                (click)="selectCountry(code.code,code.country)"
+                                                                                tabindex="0" data-country-code="af"
+                                                                                role="option">
+                                                                                <div class="flag af">
+                                                                                    <img loading="lazy" [src]="
+                                                                                    'https://cxwelcome.live/m/assets/images/countries/' +
+                                                                                    code.country +
+                                                                                    '.webp'
+                                                                                  " width="20px">
+                                                                                </div>
+                                                                                <span
+                                                                                    class="dial-code">{{code.country}}</span>
+                                                                                <span class="country-name">+{{ code.code
+                                                                                    }}</span>
+                                                                            </li>
+                                                                        </ul>
                                                                         <!-- <div id="phoneHelper"
                                                                             class="form-text text-start">Example:
                                                                             1234567821, 2123456781</div> -->
-                                                                            <div class="text-danger text-start" *ngIf="
+                                                                        <div class="text-danger text-start" *ngIf="
                                                                         userRegForm?.get('phoneNumber')?.['invalid'] &&
                                                                         (userRegForm?.get('phoneNumber')?.['touched'] ||
                                                                           userRegForm?.get('phoneNumber')?.['dirty'])
@@ -257,15 +307,15 @@
                                                                         <div class="input-group"><span
                                                                                 class="input-group-text"
                                                                                 id="Email">@</span><input id="email"
-                                                                                formControlName="email"
-                                                                                type="email" class="form-control"
-                                                                                placeholder="Email" aria-label="Email"
+                                                                                formControlName="email" type="email"
+                                                                                class="form-control" placeholder="Email"
+                                                                                aria-label="Email"
                                                                                 aria-describedby="Email" name="email">
                                                                         </div>
                                                                         <!-- <div id="emailHelper"
                                                                             class="form-text text-start">Example:
                                                                             example@email.com</div> -->
-                                                                            <div class="text-danger text-start" *ngIf="
+                                                                        <div class="text-danger text-start" *ngIf="
                                                                         userRegForm?.get('email')?.['invalid'] &&
                                                                         (userRegForm?.get('email')?.['touched'] ||
                                                                           userRegForm?.get('email')?.['dirty'])
@@ -288,16 +338,17 @@
                                                                     <div class="form-floating mb-3">
                                                                         <input formControlName="referredBy"
                                                                             id="real_name" type="text"
-                                                                            class="form-control" placeholder="Enter referral code (if any)"
+                                                                            class="form-control"
+                                                                            placeholder="Enter referral code (if any)"
                                                                             name="real_name" required>
                                                                         <!-- <label for="real_name"
                                                                             class="form-label">Full Name</label> -->
                                                                         <div id="nameHelper"
                                                                             class="form-text text-start">Full name as
                                                                             shown in your Aadhaar Card</div>
-                                                                            
+
                                                                     </div>
-                                                                   
+
                                                                 </div>
                                                             </div>
 
