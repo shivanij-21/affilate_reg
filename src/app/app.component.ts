@@ -67,8 +67,6 @@ export class AppComponent {
       phoneNumber: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       referredBy: [0],
-      countryName: [this.selectedName, Validators.required],
-      dial_code: [this.selectedCountry, Validators.required],
     });
 
   }
