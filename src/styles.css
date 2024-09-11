@@ -8,7 +8,7 @@ body {
     /* background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1600x900') no-repeat center center fixed; */
     background-size: cover;
     background-image: url('assets/images/background1mb.fd2f88097a66eaa127a6.jpg');
-    color: #000;
+    color: #fff;
 }
 h6 {
     font-size: 1rem;
@@ -1466,9 +1466,9 @@ header.et-l.et-l--header:after {
 }
 
 @media (min-width: 981px) {
-    .et_pb_section {
+    /* .et_pb_section {
         padding: 4% 0
-    }
+    } */
 
     body.et_pb_pagebuilder_layout.et_pb_show_title .post-password-required .et_pb_section,
     body:not(.et_pb_pagebuilder_layout) .post-password-required .et_pb_section {
@@ -3138,9 +3138,9 @@ body .et_pb_bg_layout_dark .et_pb_post p {
         padding: 27px 0
     }
 
-    .et_pb_section {
+    /* .et_pb_section {
         padding: 54px 0
-    }
+    } */
 
     .single.et_pb_pagebuilder_layout.et_full_width_page .et_post_meta_wrapper {
         padding-top: 81px
@@ -3200,7 +3200,7 @@ div.et_pb_section.et_pb_section_0_tb_header {
 .et_pb_menu_0_tb_header.et_pb_menu ul li a {
     font-family: 'Roboto', Helvetica, Arial, Lucida, sans-serif;
     font-weight: 700;
-    color: #fece00 !important
+    color: #1a79d3 !important
 }
 
 .et_pb_menu_0_tb_header.et_pb_menu {
@@ -10983,7 +10983,7 @@ img.mfp-img {
 } */
 
 .registration-page .card .card-header {
-    background-color: gold
+    background-color: #1a79d3
 }
 
 .registration-page .card .card-body {
@@ -10995,9 +10995,9 @@ img.mfp-img {
 }
 
 .registration-page form .btn {
-    background-color: gold;
+    background-color: #1a79d3;
     border-color: #000;
-    color: #000;
+    color: #fff;
     font-weight: 700;
     padding: 8px 32px;
     border-radius: 12px
@@ -14767,7 +14767,7 @@ body.light-d .blog-style-two .blog-item .blog-post-num,body.light-d .counter-sty
     border-radius: .25rem;
 }
 .registration-page .card .card-header {
-    background-color: gold;
+    background-color: #1a79d3;
 }
 .card-header:first-child {
     border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
@@ -14841,9 +14841,9 @@ body.light-d .blog-style-two .blog-item .blog-post-num,body.light-d .counter-sty
     width: 100%;
 }
 .registration-page form .btn {
-    background-color: gold;
+    background-color: #1a79d3;
     border-color: #000;
-    color: #000;
+    color: #fff;
     font-weight: 700;
     padding: 8px 32px;
     font-size: 1.25rem;
