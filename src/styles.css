@@ -14821,8 +14821,8 @@ body.light-d .blog-style-two .blog-item .blog-post-num,body.light-d .counter-sty
 .input-group-text {
     display: flex;
     align-items: center;
-    padding: .375rem .75rem;
-    font-size: 1rem;
+    padding: .250rem .50rem;
+    font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
     color: #212529;
@@ -14831,6 +14831,7 @@ body.light-d .blog-style-two .blog-item .blog-post-num,body.light-d .counter-sty
     background-color: #e9ecef;
     border: 1px solid #ced4da;
     border-radius: .25rem;
+    cursor: pointer;
 }
 .input-group {
     position: relative;
@@ -14885,4 +14886,66 @@ body.light-d .blog-style-two .blog-item .blog-post-num,body.light-d .counter-sty
 .fa-align-justify{
     color: #fece00;
     font-size: 20px;
+}
+.country-list {
+    background-color: #fff;
+    border-radius: 0 0 3px 3px;
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, .35);
+    list-style: none;
+    margin: 10px 0 10px -1px;
+    max-height: 200px;
+    outline: none;
+    overflow-y: scroll;
+    padding: 0;
+    position: absolute;
+    width: 250px;
+    z-index: 1;
+}
+.country-list .search {
+    background-color: #fff;
+    padding: 10px 0 6px 10px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    display: flex;
+
+}
+.country-list .search-emoji {
+    font-size: 15px;
+}
+.country-list .search-box {
+    border: 1px solid #cacaca;
+    border-radius: 3px;
+    font-size: 15px;
+    line-height: 15px;
+    margin-left: 6px;
+    outline: none;
+    /* padding: 3px 8px 5px; */
+    height: 29px;
+    width: 83%;
+}
+.country-list .country {
+    padding: 7px 9px;
+    display: flex;
+    cursor: pointer;
+}
+.country-list .country-name {
+    margin-right: 6px;
+}
+.country-list .dial-code {
+    margin-right: 6px;
+}
+.flag{
+    margin-right: 7px;
+}
+.country-logo{
+    margin-top: 6px;
+}
+@media (max-width: 600px) {
+    .et_pb_row {
+        width: 93%;
+    }
+}
+.logo-img{
+    max-width: 265px;
 }
