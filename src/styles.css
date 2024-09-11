@@ -14949,3 +14949,6 @@ body.light-d .blog-style-two .blog-item .blog-post-num,body.light-d .counter-sty
 .logo-img{
     max-width: 265px;
 }
+input{
+    border: 1px solid #c1c1c1 !important;
+}
