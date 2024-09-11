@@ -156,7 +156,7 @@ export class AppComponent {
         newCom: 0,
         commission: null,
         exposureLimit: null,
-        phoneNumber: this.userRegForm.value.phoneNumber,
+        phoneNumber: this.selectedCountry +this.userRegForm.value.phoneNumber,
         email: this.userRegForm.value.email,
         adminRefCom: 40,
         agentRefCom: 10
