@@ -44,6 +44,7 @@ export class AppComponent {
 
     this.route.queryParams.subscribe(params => {
       this.referralcode = params?.['referal_code'];
+      console.log(this.referralcode)
       if (this.referralcode) {
         localStorage.removeItem('agreferral_code');
         localStorage.setItem('agreferral_code', this.referralcode);
