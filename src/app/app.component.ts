@@ -29,6 +29,7 @@ export class AppComponent {
   fullsharechkbx: boolean = false;
 
   userRegDefaultValues = {};
+  b2creposnse: any = [];
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
     private usersService: UsersService,
@@ -121,13 +122,13 @@ export class AppComponent {
       this.userRegForm.get('b2cID')?.setValue(newId);
       this.generatedIds.push(newId);
 
-    const inputReferralCode = this.userRegForm.value.referredBy;
-    const storedReferralCode = localStorage.getItem('referral_code');
-    const referralCodeToSend = (inputReferralCode && inputReferralCode.trim() !== '') 
-    ? inputReferralCode 
-    : (storedReferralCode && storedReferralCode.trim() !== '' 
-        ? storedReferralCode 
-        : 0);
+      const inputReferralCode = this.userRegForm.value.referredBy;
+      const storedReferralCode = localStorage.getItem('referral_code');
+      const referralCodeToSend = (inputReferralCode && inputReferralCode.trim() !== '')
+        ? inputReferralCode
+        : (storedReferralCode && storedReferralCode.trim() !== ''
+          ? storedReferralCode
+          : 0);
 
       let adminUserName = '';
       if (this.siteName === 'babu365') {
@@ -154,7 +155,7 @@ export class AppComponent {
         newCom: 0,
         commission: null,
         exposureLimit: null,
-        phoneNumber: this.selectedCountry +this.userRegForm.value.phoneNumber,
+        phoneNumber: this.selectedCountry + this.userRegForm.value.phoneNumber,
         email: this.userRegForm.value.email,
         adminRefCom: 40,
         agentRefCom: 10
@@ -175,14 +176,19 @@ export class AppComponent {
 
 
           setTimeout(() => {
-            this.usersService.postB2cID(body).subscribe((response) => {
+            this.usersService.postB2cID(body).subscribe((response: any) => {
               console.log(response);
+              this.b2creposnse = res.result[0]
             });
           }, 2000);
           localStorage.removeItem('referral_code');
           this.userRegForm.reset();
-          // const fullUrl = `https://ag.${this.origin}/affilate`;
-          // window.location.href = fullUrl;
+          console.log(this.b2creposnse)
+          if (this.b2creposnse.message = 'B2C ID successfully created') {
+            const fullUrl = `https://ag.${this.origin}/affilate`;
+            window.location.href = fullUrl;
+          }
+
         }
         else {
           // this.showTostererror(res.errorDescription);
@@ -203,8 +209,8 @@ export class AppComponent {
     this.visibleconfirm = !this.visibleconfirm;
   }
 
-  visiblesidebar:boolean = false;
-  showsidebar(){
+  visiblesidebar: boolean = false;
+  showsidebar() {
     this.visiblesidebar = !this.visiblesidebar;
   }
 
@@ -1392,7 +1398,7 @@ export class AppComponent {
     }
   ];
   searchText: string = '';
-  keyupSearch(event:any) {
+  keyupSearch(event: any) {
     this.filteredCountries = this.Countries?.filter(country =>
       country?.country.toLowerCase().includes(this.searchText?.toLowerCase())
     );
@@ -1410,7 +1416,7 @@ export class AppComponent {
   selectCountry(code: string, name: string) {
     this.selectedCountry = '+' + code;
     this.selectedName = name;
-  
+
     // Hide the popup after selecting a country
     this.isPopupVisible = false;
   }
