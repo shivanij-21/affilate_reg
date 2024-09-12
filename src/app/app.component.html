@@ -13,8 +13,7 @@
                                     <div class="et_pb_menu__logo-wrap">
                                         <div class="et_pb_menu__logo">
                                             <a><img decoding="async" class="logo-img"
-                                                src="/assets/images/logos/{{siteName}}.webp"
-                                                    alt=""></a>
+                                                    src="/assets/images/logos/{{siteName}}.webp" alt=""></a>
                                         </div>
                                     </div>
                                     <div class="et_pb_menu__wrap">
@@ -241,12 +240,15 @@
                                                                             required</div>
                                                                     </div>
                                                                     <div class="form-group mb-3">
-                                                                        <div class="input-group"
-                                                                            ><span (click)="openDropDaywise()"
+                                                                        <div class="input-group"><span
+                                                                                (click)="openDropDaywise()"
                                                                                 class="input-group-text"
                                                                                 id="Phone Number">
                                                                                 <div class="flag af">
-                                                                                    <img loading="lazy" class="country-logo" [src]="'https://cxwelcome.live/m/assets/images/countries/' + selectedName +'.webp'" width="20px">
+                                                                                    <img loading="lazy"
+                                                                                        class="country-logo"
+                                                                                        [src]="'https://cxwelcome.live/m/assets/images/countries/' + selectedName +'.webp'"
+                                                                                        width="20px">
                                                                                 </div>{{selectedCountry}} <i
                                                                                     class="fa fa-angle-down"
                                                                                     aria-hidden="true"></i>
@@ -331,19 +333,23 @@
                                                                     <h6>Optional Information</h6>
                                                                 </div>
                                                                 <div class="card-body">
-                                                                    <p class="card-title text-start mb-4">Referal Code.</p>
+                                                                    <p class="card-title text-start mb-4">Referal Code.
+                                                                    </p>
                                                                     <div class="form-floating mb-3">
                                                                         <input formControlName="referredBy"
                                                                             id="real_name" type="text"
                                                                             class="form-control"
                                                                             placeholder="Enter referral code (if any)"
-                                                                            name="real_name" required>
+                                                                            name="real_name" required
+                                                                            [readonly]="referralcode !== null">
                                                                         <!-- <label for="real_name"
                                                                             class="form-label">Full Name</label> -->
                                                                         <div id="nameHelper"
-                                                                            class="form-text text-start">The ID of an agent affiliate who has introduced you to this affiliate program (Optional)
+                                                                            class="form-text text-start">The ID of an
+                                                                            agent affiliate who has introduced you to
+                                                                            this affiliate program (Optional)
                                                                         </div>
-                                                                            
+
                                                                     </div>
 
                                                                 </div>

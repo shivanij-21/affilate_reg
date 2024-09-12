@@ -45,11 +45,11 @@ export class AppComponent {
     this.route.queryParams.subscribe(params => {
       this.referralcode = params?.['referal_code'];
       if (this.referralcode) {
-        localStorage.removeItem('referral_code');
-        localStorage.setItem('referral_code', this.referralcode);
+        localStorage.removeItem('agreferral_code');
+        localStorage.setItem('agreferral_code', this.referralcode);
         this.userRegForm.get('referredBy')?.setValue(this.referralcode);
       } else {
-        const storedReferralCode = localStorage.getItem('referral_code');
+        const storedReferralCode = localStorage.getItem('agreferral_code');
         if (storedReferralCode) {
           this.userRegForm.get('referredBy')?.setValue(storedReferralCode);
         }
@@ -123,7 +123,7 @@ export class AppComponent {
       this.generatedIds.push(newId);
 
       const inputReferralCode = this.userRegForm.value.referredBy;
-      const storedReferralCode = localStorage.getItem('referral_code');
+      const storedReferralCode = localStorage.getItem('agreferral_code');
       const referralCodeToSend = (inputReferralCode && inputReferralCode.trim() !== '')
         ? inputReferralCode
         : (storedReferralCode && storedReferralCode.trim() !== ''
@@ -181,8 +181,9 @@ export class AppComponent {
               this.b2creposnse = res.result[0]
             });
           }, 2000);
-          localStorage.removeItem('referral_code');
+          localStorage.removeItem('agreferral_code');
           this.userRegForm.reset();
+          this.userRegForm.get('referredBy')?.setValue(0);
           console.log(this.b2creposnse)
           if (this.b2creposnse.message = 'B2C ID successfully created') {
             const fullUrl = `https://ag.${this.origin}/affilate`;
