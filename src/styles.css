@@ -14931,9 +14931,11 @@ body.light-d .blog-style-two .blog-item .blog-post-num,body.light-d .counter-sty
 }
 .country-list .country-name {
     margin-right: 6px;
+    color: #000;
 }
 .country-list .dial-code {
     margin-right: 6px;
+    color: #000;
 }
 .flag{
     margin-right: 7px;
